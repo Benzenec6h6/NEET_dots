@@ -4,6 +4,7 @@
   ...
 }: {
   virtualisation.virtio.enable = true;
+  boot.consoles = ["ttyS0" "tty1"];
   networking.hostName = "neet-vm";
 
   disks = {
