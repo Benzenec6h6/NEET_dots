@@ -5,6 +5,13 @@
 }: {
   virtualisation.virtio.enable = true;
   boot.consoles = ["ttyS0" "tty1"];
+  services.openssh = {
+    enable = true;
+    startOnBoot = false;
+    settings = {
+      PermitRootLogin = "yes";
+    };
+  };
   networking.hostName = "neet-vm";
 
   disks = {
