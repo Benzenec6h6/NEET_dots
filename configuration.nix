@@ -61,7 +61,7 @@
 
   # サービス有効化
   #services.sessiond.debug = true;
-  #services.sessiond-uaccess.enable = true;
+  services.sessiond-uaccess.enable = true;
   services.deviceManager = "mdevd";
   services.pipewire.enable = true;
   services.rtkit.enable = true;
@@ -71,7 +71,7 @@
   boot.uki.enable = true;
   boot.console.keyMap = "jp106";
   #boot.kernel.sysctl."vm.max_map_count" = 262144;
-  boot.secureBoot.enable = true;
+  #boot.secureBoot.enable = true;
   programs.coreutils.package = pkgs.uutils-coreutils-noprefix;
   programs.wireplumber.enable = true;
   neet.security.privileges.backend = "doas";
