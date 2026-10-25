@@ -79,6 +79,7 @@
     enable = true;
     persistPath = "/persist";
     directories = [
+      "/etc/neet-os"
       "/var/log"
       "/persist-test"
     ];
