@@ -70,7 +70,7 @@
   boot.uki.enable = true;
   boot.console.keyMap = "jp106";
   #boot.kernel.sysctl."vm.max_map_count" = 262144;
-  #boot.secureBoot.enable = true;
+  boot.secureBoot.enable = true;
   programs.coreutils.package = pkgs.uutils-coreutils-noprefix;
   programs.wireplumber.enable = true;
   neet.security.privileges.backend = "doas";

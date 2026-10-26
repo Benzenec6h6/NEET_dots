@@ -79,7 +79,7 @@
     enable = true;
     persistPath = "/persist";
     directories = [
-      "/etc/neet-os"
+      "/var/lib/sbctl"
       "/var/log"
       "/persist-test"
     ];
