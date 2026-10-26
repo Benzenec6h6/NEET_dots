@@ -65,7 +65,6 @@
   services.deviceManager = "mdevd";
   services.pipewire.enable = true;
   services.rtkit.enable = true;
-  neet.security.enable = true;
   #boot.loader.limine.enable = true;
   boot.loader.efistub.enable = true;
   boot.uki.enable = true;
