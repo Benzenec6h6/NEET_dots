@@ -7,6 +7,7 @@
     pkgs.fontconfig
     pkgs.dejavu_fonts
     pkgs.git
+    pkgs.foot
   ];
 
   services.iwd.enable = true;
@@ -73,6 +74,21 @@
   #boot.secureBoot.enable = true;
   programs.coreutils.package = pkgs.uutils-coreutils-noprefix;
   programs.wireplumber.enable = true;
+  # ディスプレイマネージャ
+  services.displayManager.enable = true;
+  services.displayManager.provider = "ly"; # または "greetd"
+
+  # WM
+  programs.sway = {
+    enable = true;
+    configFile = ./sway.conf;
+  };
+
+  programs.hyprland = {
+    enable = true;
+    configFile = ./hyprland.conf;
+  };
+
   neet.security.privileges.backend = "doas";
 
   neet.users = {
