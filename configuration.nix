@@ -98,7 +98,7 @@
       shell = "/bin/bash";
       home = "/root";
       description = "System Administrator";
-      initialHashedPassword = "$y$j9T$lwc.8Oc5W7OwTWLCfDmfw/$IA4QRTrN.yPQcPwIiF8UULTrTDA3nZTM0p1JmQj/Jw4";
+      hashedPasswordSecret = "root-password-hash";
     };
     neet = {
       uid = 1000;
@@ -107,7 +107,7 @@
       home = "/home/neet";
       description = "Primary User";
       extraGroups = ["audio" "video" "input" "seat" "wheel"];
-      initialHashedPassword = "$y$j9T$lwc.8Oc5W7OwTWLCfDmfw/$IA4QRTrN.yPQcPwIiF8UULTrTDA3nZTM0p1JmQj/Jw4";
+      hashedPasswordSecret = "neet-password-hash";
     };
   };
 }

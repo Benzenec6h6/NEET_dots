@@ -40,6 +40,7 @@
             size = "100%";
             content = {
               type = "luks";
+              keySecret = "luks-root-key";
               # 省略した場合は "crypt_<partition.name>" (ここでは "crypt_crypted") になります
               luksName = "cryptroot";
 
@@ -82,6 +83,7 @@
       "/var/lib/sbctl"
       "/var/log"
       "/persist-test"
+      "/home/neet/NEET_dots"
     ];
   };
 
