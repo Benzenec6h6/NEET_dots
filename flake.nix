@@ -12,7 +12,7 @@
   }: let
     vmSystem = neet-os.lib.evalSystem [
       ./configuration.nix
-      #./secret.nix
+      ./secret.nix
       ./profiles/vm-qemu/default.nix
     ];
   in {

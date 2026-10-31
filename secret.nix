@@ -13,6 +13,7 @@
   };
 
   # 3. Stage 1 (LUKS) シークレット
+  /*
   neet.secrets."luks-root-key" = {
     file = ./secrets/luks-root-key.age;
     inInitrd = true;
@@ -27,4 +28,5 @@
       file = ./secrets/neet-password-hash.age;
     };
   };
+  */
 }
