@@ -2,7 +2,7 @@
   description = "NEET OS Configuration & Dotfiles";
 
   inputs = {
-    neet-os.url = "github:Benzenec6h6/NEET_OS";
+    neet-os.url = "github:Benzenec6h6/NEET_OS/feat/user-s6-and-dm";
   };
 
   outputs = {
