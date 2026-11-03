@@ -76,8 +76,11 @@
   programs.coreutils.package = pkgs.uutils-coreutils-noprefix;
   programs.wireplumber.enable = true;
   # ディスプレイマネージャ
-  services.displayManager.enable = true;
-  services.displayManager.provider = "ly"; # または "greetd"
+  services.displayManager = {
+    enable = true;
+    provider = "greetd";
+    defaultSession = "hyprland";
+  };
   hardware.graphics.enable = true;
 
   # WM
