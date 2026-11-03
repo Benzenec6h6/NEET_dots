@@ -78,6 +78,7 @@
   # ディスプレイマネージャ
   services.displayManager.enable = true;
   services.displayManager.provider = "ly"; # または "greetd"
+  hardware.graphics.enable = true;
 
   # WM
   programs.sway = {
