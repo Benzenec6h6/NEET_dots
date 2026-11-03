@@ -4,7 +4,9 @@
   ...
 }: {
   virtualisation.virtio.enable = true;
-  boot.consoles = ["ttyS0" "tty1"];
+  boot.vt.enable = true;
+  boot.serial.enable = true;
+  boot.primaryConsole = "serial";
   services.openssh = {
     enable = true;
     startOnBoot = false;
