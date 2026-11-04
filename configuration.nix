@@ -63,6 +63,12 @@
   # サービス有効化
   #services.sessiond.debug = true;
   services.sessiond-uaccess.enable = true;
+  /*
+  services.seatd = {
+    enable = true;
+    group = "seat";
+  };
+  */
   services.deviceManager = "mdevd";
   services.pipewire.enable = true;
   services.rtkit.enable = true;

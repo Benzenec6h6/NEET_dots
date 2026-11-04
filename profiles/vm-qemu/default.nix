@@ -115,10 +115,4 @@
       }
     ];
   };
-
-  services.seatd = {
-    enable = true;
-    group = "seat";
-    debug = true;
-  };
 }
