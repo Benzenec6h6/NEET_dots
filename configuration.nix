@@ -1,13 +1,14 @@
-{
-  pkgs,
-  lib,
-  ...
-}: {
-  environment.systemPackages = [
-    pkgs.fontconfig
-    pkgs.dejavu_fonts
-    pkgs.git
-    pkgs.foot
+{pkgs, ...}: {
+  environment.systemPackages = with pkgs; [
+    jetbrains-mono
+    noto-fonts
+    noto-fonts-color-emoji
+    noto-fonts-cjk-sans
+    noto-fonts-cjk-serif
+    noto-fonts-monochrome-emoji
+    dejavu_fonts
+    git
+    foot
   ];
 
   services.iwd.enable = true;
