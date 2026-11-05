@@ -9,6 +9,7 @@
     dejavu_fonts
     git
     foot
+    kitty
   ];
 
   services.iwd.enable = true;
