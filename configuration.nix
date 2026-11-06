@@ -93,7 +93,7 @@
 
   programs.hyprland = {
     enable = true;
-    configFile = ./hyprland.conf;
+    configFile = ./hyprland.lua;
   };
 
   neet.security.privileges.backend = "doas";
