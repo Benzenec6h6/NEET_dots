@@ -71,7 +71,7 @@
   #boot.loader.limine.enable = true;
   boot.loader.efistub.enable = true;
   boot.uki.enable = true;
-  boot.console.keyMap = "jp106";
+  hardware.keyboard.keyMap = "jp106";
   neet.security.secrets.tools.enable = true;
   #boot.kernel.sysctl."vm.max_map_count" = 262144;
   #boot.secureBoot.enable = true;

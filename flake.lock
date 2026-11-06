@@ -2,11 +2,11 @@
   "nodes": {
     "neet-os": {
       "locked": {
-        "lastModified": 1793907116,
-        "narHash": "sha256-6NTR7gWegy94dkw0X3GlkovF/AtqqOmb4PHuc6IJzqc=",
+        "lastModified": 1793957549,
+        "narHash": "sha256-e9oTKxZW8gQL7vQd+gPLZYVC2uYLyvgyHLsjFjEpE5Y=",
         "owner": "Benzenec6h6",
         "repo": "NEET_OS",
-        "rev": "003a714b631c32874f779692f242eca3f2eb7a23",
+        "rev": "e2ca5bb2d0bfa299bb9ed55409ab755a36703e19",
         "type": "github"
       },
       "original": {
