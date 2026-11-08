@@ -97,6 +97,7 @@
   };
 
   neet.security.privileges.backend = "doas";
+  i18n.inputMethod.enable = true;
 
   neet.users = {
     root = {
