@@ -83,6 +83,7 @@
     provider = "greetd";
     defaultSession = "hyprland";
   };
+  neet.security.oo7.enable = true;
   hardware.graphics.enable = true;
 
   # WM
