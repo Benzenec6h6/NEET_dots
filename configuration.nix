@@ -7,6 +7,7 @@
     noto-fonts-cjk-serif
     noto-fonts-monochrome-emoji
     dejavu_fonts
+    vim
     git
     foot
     kitty
