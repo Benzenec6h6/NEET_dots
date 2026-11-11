@@ -85,6 +85,10 @@
     defaultSession = "hyprland";
   };
   neet.security.oo7.enable = true;
+  programs.neet-helper = {
+    enable = true;
+    flake = "/home/neet/NEET_dots";
+  };
   hardware.graphics.enable = true;
 
   # WM
