@@ -14,10 +14,6 @@
   ];
 
   services.iwd.enable = true;
-  services.openssh = {
-    enable = true;
-    startOnBoot = false;
-  };
   services.sshguard = {
     enable = false;
     whitelist = [];
