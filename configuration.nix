@@ -13,6 +13,7 @@
     kitty
   ];
 
+  services.nix-daemon.package = pkgs.lix;
   services.iwd.enable = true;
   services.sshguard = {
     enable = false;
