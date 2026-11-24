@@ -1,8 +1,8 @@
-{
-  config,
-  lib,
-  ...
-}: {
+{...}: {
+  imports = [
+    ./disk.nix
+    ./impermanence.nix
+  ];
   virtualisation.virtio.enable = true;
   boot.vt.enable = true;
   boot.serial.enable = true;
@@ -15,104 +15,4 @@
     };
   };
   networking.hostName = "neet-vm";
-
-  disks = {
-    deviceReference = "partuuid";
-
-    devices = {
-      main = {
-        device = null;
-
-        partitions = [
-          # ESP / Boot (平文のまま)
-          {
-            name = "boot";
-            size = "512M";
-            content = {
-              type = "vfat";
-              label = "NEET_BOOT";
-              mountPoint = "/boot";
-              neededForBoot = true;
-            };
-          }
-
-          # ★ LUKS 暗号化パーティション
-          {
-            name = "crypted"; # パーティション名
-            size = "100%";
-            content = {
-              type = "luks";
-              #keySecret = "luks-root-key";
-              # 省略した場合は "crypt_<partition.name>" (ここでは "crypt_crypted") になります
-              luksName = "cryptroot";
-
-              # 暗号化コンテナの中に Btrfs を配置する
-              content = {
-                type = "btrfs";
-                label = "NEET_OS";
-                mountPoint = null;
-
-                subvolumes = {
-                  "@root" = {
-                    mountPoint = "/";
-                    options = ["compress=zstd"];
-                    resetOnBoot = true;
-                    keepOldRoots = 3;
-                  };
-
-                  "@nix" = {
-                    mountPoint = "/nix";
-                    options = ["compress=zstd"];
-                  };
-
-                  "@persist" = {
-                    mountPoint = "/persist";
-                    options = ["compress=zstd"];
-                  };
-                };
-              };
-            };
-          }
-        ];
-      };
-    };
-  };
-
-  impermanence = {
-    enable = true;
-    persistPath = "/persist";
-    directories = [
-      # 1. セキュアブート鍵 (秘密鍵が含まれるため、root 専用で他者閲覧禁止)
-      {
-        path = "/var/lib/sbctl";
-        user = "root";
-        group = "root";
-        mode = "0700";
-      }
-
-      # 2. システムログ (root所有、一般ユーザーは閲覧のみ可能)
-      {
-        path = "/var/log";
-        user = "root";
-        group = "root";
-        mode = "0755";
-      }
-
-      # 3. テスト用ディレクトリ (neet ユーザーが自由に読み書きできる権限)
-      {
-        path = "/persist-test";
-        user = "neet";
-        group = "users";
-        mode = "0755";
-      }
-
-      # 4. ユーザーホームディレクトリ (neet 専用、他者閲覧禁止)
-      {
-        path = "/home/neet";
-        user = "neet";
-        group = "users";
-        mode = "0700";
-      }
-    ];
-  };
 }

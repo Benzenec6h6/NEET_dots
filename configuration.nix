@@ -21,58 +21,22 @@
   };
   networking.nftables = {
     enable = true;
-    tables.filter = {
-      family = "inet"; # IPv4 と IPv6 の両方を 1 つのテーブルで扱う
-      content = ''
-        chain input {
-          # 基本方針: 許可したもの以外はすべて破棄 (drop)
-          # priority 0 (filter) で動作
-          type filter hook input priority 0; policy drop;
-
-          # 1. ループバック (localhost) からの通信は無条件で許可
-          iifname "lo" accept
-
-          # 2. 既に確立された通信 (established) や関連パケット (related) は許可
-          # (これがないと、自分から外に出したリクエストの返事を受け取れません)
-          ct state { established, related } accept
-
-          # 3. 破損した不正パケットは破棄
-          ct state invalid drop
-
-          # 4. ICMP (ping) を許可
-          ip protocol icmp accept
-          ip6 nexthdr icmpv6 accept
-
-          # 5. SSH (ポート 22) の接続を許可
-          tcp dport 22 accept
-        }
-
-        chain forward {
-          # ルーター動作はしないので通過パケットはすべて破棄
-          type filter hook forward priority 0; policy drop;
-        }
-
-        chain output {
-          # 自分が外に出ていく通信はすべて許可
-          type filter hook output priority 0; policy accept;
-        }
-      '';
-    };
+    allowedTCPPorts = [22 80];
+    allowedUDPPorts = [41641];
   };
 
   # サービス有効化
-  #services.sessiond.debug = true;
   services.sessiond-uaccess.enable = true;
   services.deviceManager = "mdevd";
   services.pipewire.enable = true;
   services.rtkit.enable = true;
-  #boot.loader.limine.enable = true;
-  boot.loader.efistub.enable = true;
-  boot.uki.enable = true;
   hardware.keyboard.keyMap = "jp106";
   neet.security.secrets.tools.enable = true;
   #boot.kernel.sysctl."vm.max_map_count" = 262144;
   #boot.secureBoot.enable = true;
+  #boot.loader.limine.enable = true;
+  boot.loader.efistub.enable = true;
+  boot.uki.enable = true;
   programs.coreutils.package = pkgs.uutils-coreutils-noprefix;
   programs.wireplumber.enable = true;
   # ディスプレイマネージャ
@@ -81,46 +45,13 @@
     provider = "greetd";
     defaultSession = "hyprland";
   };
-  neet.security.oo7.enable = true;
+  programs.sway.enable = true;
+  programs.hyprland.enable = true;
   programs.neet-helper = {
     enable = true;
     flake = "/home/neet/NEET_dots";
   };
   hardware.graphics.enable = true;
 
-  # WM
-  programs.sway = {
-    enable = true;
-    configFile = ./sway.conf;
-  };
-
-  programs.hyprland = {
-    enable = true;
-    configFile = ./hyprland.lua;
-  };
-
   neet.security.privileges.backend = "doas";
-  i18n.inputMethod.enable = true;
-
-  neet.users = {
-    root = {
-      uid = 0;
-      gid = 0;
-      shell = "/bin/bash";
-      home = "/root";
-      description = "System Administrator";
-      initialHashedPassword = "$y$j9T$jaiy6IlCEWfCt4hUXIqd81$l.4rBBIQs..6wpicaFF9Ir7u80wHc5ZHhht2kh21cgD";
-      #hashedPasswordSecret = "root-password-hash";
-    };
-    neet = {
-      uid = 1000;
-      gid = 1000;
-      shell = "/bin/bash";
-      home = "/home/neet";
-      description = "Primary User";
-      extraGroups = ["audio" "video" "input" "seat" "wheel"];
-      initialHashedPassword = "$y$j9T$uIAhQW8gM7hg/vtyIDPn31$jA8TliY91KoGwnLxFEskcy9b.POtd2d2iuag.oeoKf0";
-      #hashedPasswordSecret = "neet-password-hash";
-    };
-  };
 }
