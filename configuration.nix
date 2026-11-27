@@ -54,4 +54,5 @@
   hardware.graphics.enable = true;
 
   neet.security.privileges.backend = "doas";
+  neet.security.oo7.enable = true;
 }
